@@ -18,5 +18,29 @@ program Ajedrez {
 
 	keyboard.right().onPressDo({reyBlanco.moverDerecha()})
 	keyboard.left().onPressDo({reyBlanco.moverIzquierda()})
+
+	//Agregando Oleada como objetos
+    oleada.agregarEnemigo(enemigo)
+	oleada.agregarEnemigo(enemigoDos)
+	oleada.agregarEnemigo(enemigoTres)
+	oleada.agregarEnemigo(enemigoCuatro)
+	oleada.agregarEnemigo(enemigoCinco)
+
+	//spawner sin metodo
+	game.onTick(1000, "Lanzar Enemigo", { => oleada.sacarEnemigo()})
+    //oleada.spawner() // lanzaErrores y no se porque
+	/*game.onTick(3000, "moverEnemigos", { enemigo.avanzarACoronar()})
+	game.onTick(3000, "moverEnemigos", { enemigoDos.avanzarACoronar()})
+	game.onTick(3000, "moverEnemigos", { enemigoTres.avanzarACoronar()})
+	game.onTick(3000, "moverEnemigos", { enemigoCuatro.avanzarACoronar()})
+	game.onTick(3000, "moverEnemigos", { enemigoCinco.avanzarACoronar()})*/
+
+
+	/*game.onTick(3000, "Lanzar Enemigo", {oleada.sacarEnemigo()
+	if (oleada.enemigosFuturos.isEmpty()) {
+		game.removeTickEvent("Lanzar Enemigo")
+	}}) */
+	game.onTick(1000, "Mover Enemigos", {oleada.moverEnemigos()})
+
 	game.start()
 }
